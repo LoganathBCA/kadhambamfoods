@@ -1,0 +1,19 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "loginUser": "dshiners33@gamil.com",
+  "loginPassword": "AIL333334",
+  "executionArgs": {
+    "projectName": "new  first",
+    "projectPath": "/home/infant/Desktop/new  first",
+    "testIds": [],
+    "additionalInstruction": "",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-kXswwcXfVGJoC2r2FYdLx7pSTZq7fyApR0YtDDSOXViKtQdgqlpjG43GIlWzO9pPsCxfT_6NDMIBUiWUgJex7K3hHAiHPpsuVyijlYZEodmKwg_ndei5IFLW90tzCLUJurc"
+    }
+  },
+  "serverPort": 43275
+}

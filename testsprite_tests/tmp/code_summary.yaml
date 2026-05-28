@@ -1,0 +1,278 @@
+version: "2"
+type: frontend
+tech_stack:
+  - JavaScript
+  - React 19
+  - Vite
+  - React Router DOM v7
+  - Firebase (Auth + Firestore)
+  - Cloudinary (image upload)
+  - react-hot-toast
+  - lucide-react
+  - qrcode.react
+routes:
+  - path: /
+    file: src/pages/HomePage.jsx
+    auth_required: false
+    description: Landing/home page with featured products and hero section
+  - path: /shop
+    file: src/pages/ShopPage.jsx
+    auth_required: false
+    description: Browse all products with filtering and search
+  - path: /about
+    file: src/pages/AboutPage.jsx
+    auth_required: false
+    description: About the store
+  - path: /contact
+    file: src/pages/ContactPage.jsx
+    auth_required: false
+    description: Contact form and store info
+  - path: /product/:id
+    file: src/pages/ProductDetailPage.jsx
+    auth_required: false
+    description: Individual product detail page
+  - path: /cart
+    file: src/pages/CartPage.jsx
+    auth_required: false
+    description: Shopping cart with item management
+  - path: /login
+    file: src/pages/LoginPage.jsx
+    auth_required: false
+    description: Login and registration page with email/password and Google OAuth
+  - path: /checkout
+    file: src/pages/CheckoutPage.jsx
+    auth_required: true
+    description: Checkout flow (protected route)
+  - path: /account
+    file: src/pages/AccountPage.jsx
+    auth_required: true
+    description: User account and order history (protected route)
+  - path: /order-success
+    file: src/pages/OrderSuccessPage.jsx
+    auth_required: false
+    description: Order confirmation page after successful checkout
+  - path: /admin
+    file: src/pages/admin/AdminDashboard.jsx
+    auth_required: true
+    description: Admin dashboard (admin-only route)
+  - path: /admin/orders
+    file: src/pages/admin/AdminOrders.jsx
+    auth_required: true
+    description: Admin order management
+  - path: /admin/products
+    file: src/pages/admin/AdminProducts.jsx
+    auth_required: true
+    description: Admin product management with Cloudinary image upload
+  - path: /admin/categories
+    file: src/pages/admin/AdminCategories.jsx
+    auth_required: true
+    description: Admin category management
+  - path: /admin/users
+    file: src/pages/admin/AdminUsers.jsx
+    auth_required: true
+    description: Admin user management
+features:
+  - name: User Authentication
+    description: Login and register with email/password or Google OAuth via Firebase Auth
+    files:
+      - src/pages/LoginPage.jsx
+      - src/context/AuthContext.jsx
+      - src/firebase/auth.js
+    entry_route: /login
+    user_interactions:
+      - Click "Continue with Google" button for Google sign-in
+      - Fill email input field
+      - Fill password input field
+      - Click "Sign In" button to login
+      - Click "Register" to switch to registration mode
+      - Fill full name when registering
+      - Click "Create Account" to register
+      - Click "Forgot password?" link
+      - Click "Back to Home" link
+    api_calls:
+      - method: POST
+        endpoint: Firebase Auth signInWithEmailAndPassword
+      - method: POST
+        endpoint: Firebase Auth createUserWithEmailAndPassword
+      - method: POST
+        endpoint: Firebase Auth signInWithPopup (Google)
+    auth_required: false
+
+  - name: Product Browsing
+    description: Browse and filter products on the shop page
+    files:
+      - src/pages/ShopPage.jsx
+      - src/pages/HomePage.jsx
+    entry_route: /shop
+    user_interactions:
+      - View product grid
+      - Search products by name
+      - Filter by category
+      - Sort products
+      - Click product card to navigate to detail
+      - Add product to cart from shop page
+    api_calls:
+      - method: GET
+        endpoint: Firestore products collection
+    auth_required: false
+
+  - name: Product Detail
+    description: View detailed product information and add to cart
+    files:
+      - src/pages/ProductDetailPage.jsx
+    entry_route: /product/:id
+    user_interactions:
+      - View product images
+      - Read product description and price
+      - Select quantity
+      - Click "Add to Cart" button
+      - Navigate back to shop
+    api_calls:
+      - method: GET
+        endpoint: Firestore product document by ID
+    auth_required: false
+
+  - name: Shopping Cart
+    description: Manage items in the shopping cart
+    files:
+      - src/pages/CartPage.jsx
+      - src/context/CartContext.jsx
+    entry_route: /cart
+    user_interactions:
+      - View cart items
+      - Increase item quantity
+      - Decrease item quantity
+      - Remove item from cart
+      - View cart total
+      - Click "Proceed to Checkout" button
+      - Click "Continue Shopping" link
+    api_calls: []
+    auth_required: false
+
+  - name: Checkout
+    description: Complete purchase with shipping and payment info
+    files:
+      - src/pages/CheckoutPage.jsx
+    entry_route: /checkout
+    user_interactions:
+      - Fill shipping address fields
+      - Review order summary
+      - Click "Place Order" button
+      - View order confirmation
+    api_calls:
+      - method: POST
+        endpoint: Firestore orders collection
+    auth_required: true
+
+  - name: User Account
+    description: View and manage account details and order history
+    files:
+      - src/pages/AccountPage.jsx
+    entry_route: /account
+    user_interactions:
+      - View profile information
+      - View past orders
+      - Sign out
+    api_calls:
+      - method: GET
+        endpoint: Firestore orders collection filtered by user
+    auth_required: true
+
+  - name: Admin Dashboard
+    description: Admin overview of orders, products, users, and categories
+    files:
+      - src/pages/admin/AdminDashboard.jsx
+    entry_route: /admin
+    user_interactions:
+      - View dashboard statistics
+      - Navigate to admin sub-sections
+    api_calls:
+      - method: GET
+        endpoint: Firestore collections (orders, products, users)
+    auth_required: true
+
+  - name: Admin Product Management
+    description: CRUD operations on products with Cloudinary image upload
+    files:
+      - src/pages/admin/AdminProducts.jsx
+      - src/services/cloudinaryService.js
+    entry_route: /admin/products
+    user_interactions:
+      - View products list
+      - Click "Add Product" button
+      - Fill product form (name, price, description, category)
+      - Upload product image
+      - Click "Save" to create product
+      - Click edit icon on product
+      - Update product fields
+      - Click "Update" to save changes
+      - Click delete icon to remove product
+    api_calls:
+      - method: POST
+        endpoint: Cloudinary image upload API
+      - method: POST
+        endpoint: Firestore products collection
+      - method: PUT
+        endpoint: Firestore product document
+      - method: DELETE
+        endpoint: Firestore product document
+    auth_required: true
+
+  - name: Admin Order Management
+    description: View and update order statuses
+    files:
+      - src/pages/admin/AdminOrders.jsx
+    entry_route: /admin/orders
+    user_interactions:
+      - View orders list
+      - Filter orders by status
+      - Update order status
+    api_calls:
+      - method: GET
+        endpoint: Firestore orders collection
+      - method: PUT
+        endpoint: Firestore order document status
+    auth_required: true
+
+  - name: Admin Category Management
+    description: CRUD operations on product categories
+    files:
+      - src/pages/admin/AdminCategories.jsx
+    entry_route: /admin/categories
+    user_interactions:
+      - View categories list
+      - Add new category
+      - Edit category name
+      - Delete category
+    api_calls:
+      - method: GET
+        endpoint: Firestore categories collection
+      - method: POST
+        endpoint: Firestore categories collection
+      - method: DELETE
+        endpoint: Firestore category document
+    auth_required: true
+
+  - name: Admin User Management
+    description: View registered users
+    files:
+      - src/pages/admin/AdminUsers.jsx
+    entry_route: /admin/users
+    user_interactions:
+      - View users list
+      - Search users by email or name
+    api_calls:
+      - method: GET
+        endpoint: Firestore users collection
+    auth_required: true
+
+known_limitations:
+  - issue: Admin routes require specific UID or email configured in VITE_ADMIN_UIDS / VITE_ADMIN_EMAILS env vars; tests cannot access admin pages without valid admin credentials
+    location: src/context/AuthContext.jsx
+    impact: Admin panel tests will be skipped or require special test credentials
+  - issue: Google OAuth sign-in opens a popup which cannot be automated in headless browser tests
+    location: src/pages/LoginPage.jsx
+    impact: Google sign-in flow cannot be fully tested automatically
+  - issue: Firebase Auth and Firestore require live credentials; tests depend on real Firebase project
+    location: src/firebase/
+    impact: Tests run against live Firebase backend, not a mock

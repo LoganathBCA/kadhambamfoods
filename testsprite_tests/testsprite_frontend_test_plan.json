@@ -1,0 +1,1292 @@
+[
+  {
+    "id": "TC001",
+    "title": "Place an order with shipping and payment details",
+    "description": "Verify that an authenticated customer can complete checkout by entering shipping details, providing a UTR reference, and reaching the order success page.",
+    "category": "Customer Checkout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the sign-in form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /checkout"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the shipping address fields with valid details"
+      },
+      {
+        "type": "action",
+        "description": "Review the order summary"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid UTR number in the payment reference field"
+      },
+      {
+        "type": "action",
+        "description": "Place the order"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the order success page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Register a new customer account",
+    "description": "Verify that a visitor can create a new account with name, email, and password and reach an authenticated account state.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Switch to registration mode"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the full name field with a new customer name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a new customer email"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with a new customer password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the authenticated account state is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Sign in with email and password",
+    "description": "Verify that a customer can sign in with valid credentials and reach an authenticated account state.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the sign-in form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the authenticated account state is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Add a product to the cart from the shop",
+    "description": "This verifies that a shopper can add an item to the cart directly from the catalog and see the cart reflect the change.",
+    "category": "Product Browsing and Discovery",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /shop"
+      },
+      {
+        "type": "action",
+        "description": "Click add to cart for a product in the catalog"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart update is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the cart page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart contains the added product"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Open a featured product from the home page",
+    "description": "This verifies that an anonymous visitor can see featured products on the home page and open a product detail page from there.",
+    "category": "Home and Store Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify featured products are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click a featured product"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product detail page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Manage cart item quantities and remove items",
+    "description": "Verify that a shopper can update quantities in the cart, remove an item, and see the cart total refresh accordingly.",
+    "category": "Shopping Cart Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /cart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify cart items are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Increase the quantity of one cart item"
+      },
+      {
+        "type": "action",
+        "description": "Decrease the quantity of the same cart item"
+      },
+      {
+        "type": "action",
+        "description": "Remove the item from the cart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart updates to reflect the removed item and refreshed total"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Review product details and add a chosen quantity to the cart",
+    "description": "This verifies that a shopper can review a product’s details, choose a quantity, add it to the cart, and see the updated cart state.",
+    "category": "Product Detail Viewing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /shop"
+      },
+      {
+        "type": "action",
+        "description": "Click a product from the results"
+      },
+      {
+        "type": "action",
+        "description": "Select a quantity"
+      },
+      {
+        "type": "action",
+        "description": "Add the product to the cart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart update is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the cart page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart contains the selected product quantity"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Go from the home page to the shop catalog",
+    "description": "This verifies that an anonymous visitor can use the main navigation to reach the shop catalog and browse products.",
+    "category": "Home and Store Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the shop page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product catalog is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Create a new product with an image",
+    "description": "This verifies that an admin can add a new product, upload an image, and save it so the product appears in the catalog.",
+    "category": "Admin Product Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/products"
+      },
+      {
+        "type": "action",
+        "description": "Click the add product action"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the product name field with Premium Trial Product"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the product price field with a valid price"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the product description field with a short product description"
+      },
+      {
+        "type": "action",
+        "description": "Select a product category"
+      },
+      {
+        "type": "action",
+        "description": "Upload a product image"
+      },
+      {
+        "type": "action",
+        "description": "Save the new product"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new product appears in the product list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Search, filter, sort, and open a product from the shop",
+    "description": "This verifies that a shopper can narrow the catalog in the shop, see the updated results, and open a product detail page from the filtered list.",
+    "category": "Product Browsing and Discovery",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /shop"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a product name"
+      },
+      {
+        "type": "action",
+        "description": "Select a category filter"
+      },
+      {
+        "type": "action",
+        "description": "Select a sort option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product grid is updated"
+      },
+      {
+        "type": "action",
+        "description": "Click a product from the results"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product detail page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Proceed from cart to checkout",
+    "description": "Verify that a shopper can move from the cart into the protected checkout flow when ready to place an order.",
+    "category": "Shopping Cart Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /cart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify cart items are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the option to proceed to checkout"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the checkout page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Update an order status",
+    "description": "This verifies that an admin can change an order from pending to verified and see the updated status reflected in the list.",
+    "category": "Admin Order Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/orders"
+      },
+      {
+        "type": "action",
+        "description": "Change an order status to verified"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated order status is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "View account details and past orders",
+    "description": "An authenticated customer can open the account page and see their profile information along with previous orders.",
+    "category": "Account and Order History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /account"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify profile information is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify past orders are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Review and filter admin orders",
+    "description": "This verifies that an admin can open the orders page, view the order list, filter it by status, and see the list update accordingly.",
+    "category": "Admin Order Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/orders"
+      },
+      {
+        "type": "action",
+        "description": "Select an order status filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the filtered order list is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Edit an existing product",
+    "description": "This verifies that an admin can open an existing product, update its details, and save the changes successfully.",
+    "category": "Admin Product Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/products"
+      },
+      {
+        "type": "action",
+        "description": "Open an existing product for editing"
+      },
+      {
+        "type": "action",
+        "description": "Update the product name field"
+      },
+      {
+        "type": "action",
+        "description": "Update the product price field"
+      },
+      {
+        "type": "action",
+        "description": "Save the product changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated product appears in the product list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Open admin order management from the dashboard",
+    "description": "An admin can move from the dashboard into order management.",
+    "category": "Admin Dashboard Overview",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin"
+      },
+      {
+        "type": "action",
+        "description": "Open order management from the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the order management view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "View admin dashboard statistics",
+    "description": "An admin can open the protected dashboard and review store metrics.",
+    "category": "Admin Dashboard Overview",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify dashboard statistics are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "Open admin product management from the dashboard",
+    "description": "An admin can move from the dashboard into product management.",
+    "category": "Admin Dashboard Overview",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin"
+      },
+      {
+        "type": "action",
+        "description": "Open product management from the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product management view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC019",
+    "title": "Open admin category management from the dashboard",
+    "description": "An admin can move from the dashboard into category management.",
+    "category": "Admin Dashboard Overview",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin"
+      },
+      {
+        "type": "action",
+        "description": "Open category management from the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the category management view is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC020",
+    "title": "Open admin user management from the dashboard",
+    "description": "An admin can move from the dashboard into user management.",
+    "category": "Admin Dashboard Overview",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin"
+      },
+      {
+        "type": "action",
+        "description": "Open user management from the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user management view is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC021",
+    "title": "Delete a product",
+    "description": "This verifies that an admin can remove a product from the catalog and no longer see it in the product list.",
+    "category": "Admin Product Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/products"
+      },
+      {
+        "type": "action",
+        "description": "Click the delete action for a product"
+      },
+      {
+        "type": "action",
+        "description": "Confirm the deletion"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product is no longer shown in the list"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC022",
+    "title": "Add a new category",
+    "description": "This verifies that an admin can create a new product category and see it added to the category list.",
+    "category": "Admin Category Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/categories"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the category name field with Seasonal Specials"
+      },
+      {
+        "type": "action",
+        "description": "Save the new category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new category appears in the category list"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "View the registered users list",
+    "description": "An admin can open the user management page and see the registered users list displayed.",
+    "category": "Admin User Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to the user management page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the registered users list is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "Return to account and sign out",
+    "description": "An authenticated customer can open the account page and sign out successfully.",
+    "category": "Account and Order History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /account"
+      },
+      {
+        "type": "action",
+        "description": "Sign out of the account"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is signed out"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login page is shown"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC025",
+    "title": "Search for a user by name or email",
+    "description": "An admin can search the user list and see matching users displayed in the results.",
+    "category": "Admin User Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to the user management page"
+      },
+      {
+        "type": "action",
+        "description": "Search for a registered user by name or email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify matching users are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC026",
+    "title": "Open the contact page from the main navigation",
+    "description": "This verifies that an anonymous visitor can navigate to the contact page and see contact information and the inquiry form.",
+    "category": "Home and Store Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the contact page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contact information and the inquiry form are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC027",
+    "title": "Open the about page from the main navigation",
+    "description": "This verifies that an anonymous visitor can navigate to the about page and read the store story.",
+    "category": "Home and Store Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the about page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the about content is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC028",
+    "title": "Continue shopping from the cart",
+    "description": "Verify that a shopper can leave the cart and continue browsing products without losing access to shopping.",
+    "category": "Shopping Cart Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /cart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify cart items are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the option to continue shopping"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user reaches the shopping area"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC029",
+    "title": "Send a contact inquiry",
+    "description": "A visitor can submit the contact form and see a confirmation that the message was sent.",
+    "category": "Customer Support Contact",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Test Visitor"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with visitor@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the subject field with Product question"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with I would like more information about your products."
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a message sent confirmation is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC030",
+    "title": "Edit a category name",
+    "description": "This verifies that an admin can update an existing category name and see the change reflected in the list.",
+    "category": "Admin Category Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/categories"
+      },
+      {
+        "type": "action",
+        "description": "Open an existing category for editing"
+      },
+      {
+        "type": "action",
+        "description": "Update the category name field"
+      },
+      {
+        "type": "action",
+        "description": "Save the category changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated category appears in the category list"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC031",
+    "title": "Delete a category",
+    "description": "This verifies that an admin can remove a category and no longer see it in the category list.",
+    "category": "Admin Category Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /admin/categories"
+      },
+      {
+        "type": "action",
+        "description": "Click the delete action for a category"
+      },
+      {
+        "type": "action",
+        "description": "Confirm the deletion"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the category is no longer shown in the list"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC032",
+    "title": "Return to the shop from a product detail page",
+    "description": "This verifies that a shopper can open a product detail page from the shop and return to the shop catalog afterward.",
+    "category": "Product Browsing and Discovery",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /shop"
+      },
+      {
+        "type": "action",
+        "description": "Click a product from the results"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to return to the shop page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product catalog is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC033",
+    "title": "View store contact details",
+    "description": "A visitor can open the contact page and review the store contact information.",
+    "category": "Customer Support Contact",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify store contact details are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC034",
+    "title": "Request a password reset",
+    "description": "Verify that a customer can request a password reset from the login page and see confirmation that the request was initiated.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Switch to password reset action"
+      },
+      {
+        "type": "action",
+        "description": "Enter the account email in the reset field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the reset request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a reset confirmation is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC035",
+    "title": "View product details before returning to the shop",
+    "description": "This verifies that a shopper can inspect a product detail page and return to the shop catalog without losing navigation context.",
+    "category": "Product Detail Viewing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /shop"
+      },
+      {
+        "type": "action",
+        "description": "Click a product from the results"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to return to the shop page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product catalog is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC036",
+    "title": "Show validation when checkout fields are missing",
+    "description": "Verify that checkout prevents submission when a required shipping field is missing and shows validation feedback before the order is placed.",
+    "category": "Customer Checkout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the sign-in form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /checkout"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the shipping address fields while leaving one required field empty"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to place the order"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the order is not placed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC037",
+    "title": "Submit a contact inquiry with required fields missing",
+    "description": "A visitor who leaves contact fields empty sees validation feedback and cannot submit the inquiry.",
+    "category": "Customer Support Contact",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contact form validation errors are visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC038",
+    "title": "Return from login to the home page",
+    "description": "Verify that a visitor can leave the login page and return to the home page.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Click the option to return to the home page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the home page is displayed"
+      }
+    ],
+    "priority": "Low"
+  }
+]

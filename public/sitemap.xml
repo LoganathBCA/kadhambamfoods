@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Home -->
+  <url>
+    <loc>https://kadhambam.com/</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kadhambam.com/og-cover.jpg</image:loc>
+      <image:title>Kadhambam Premium Dry Fruits – Farm to Doorstep</image:title>
+    </image:image>
+  </url>
+
+  <!-- Shop -->
+  <url>
+    <loc>https://kadhambam.com/shop</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://kadhambam.com/about</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://kadhambam.com/contact</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Cart -->
+  <url>
+    <loc>https://kadhambam.com/cart</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
